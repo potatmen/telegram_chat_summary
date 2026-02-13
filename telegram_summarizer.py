@@ -5,7 +5,7 @@ from datetime import datetime, timezone, timedelta
 
 import requests
 from telethon import TelegramClient
-from telethon.errors import SessionPasswordNeededError  # kept for 2FA fallback
+from telethon.errors import SessionPasswordNeededError
 
 logger = logging.getLogger(__name__)
 
