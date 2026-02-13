@@ -69,6 +69,10 @@ class TelegramSummarizer:
         if not self.client.is_connected():
             await self.client.connect()
 
+        match = re.match(r'https?://t\.me/(\w+)', channel_identifier)
+        if match:
+            channel_identifier = f'@{match.group(1)}'
+
         entity = await self.client.get_entity(channel_identifier)
         logger.info(f"Fetching messages from {channel_identifier}")
 

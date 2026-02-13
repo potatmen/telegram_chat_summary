@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "Telegram Channel Summarizer Bot\n\n"
-        "Usage: /summarize @channelname\n"
+        "Usage: /summarize @channelname or https://t.me/channelname\n"
         "Summarizes the last 24 hours of messages from a channel."
     )
 
@@ -28,7 +28,8 @@ async def summarize_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not context.args:
         await update.message.reply_text(
             "Usage: /summarize @channelname\n"
-            "Example: /summarize @technews"
+            "Example: /summarize @technews\n"
+            "Also accepts links: /summarize https://t.me/technews"
         )
         return
 
@@ -69,6 +70,7 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", start))
     app.add_handler(CommandHandler("summarize", summarize_command))
+    app.add_handler(CommandHandler("summarise", summarize_command))
 
     logger.info("Bot started")
     app.run_polling()
