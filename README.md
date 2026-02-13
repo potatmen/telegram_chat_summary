@@ -43,6 +43,7 @@ Open your bot in Telegram and send:
 
 ```
 /summarize @channelname
+/summarize https://t.me/channelname
 ```
 
 The bot fetches messages from the last 24 hours, sends them to Gemini for summarization, and returns the result.
@@ -50,7 +51,8 @@ The bot fetches messages from the last 24 hours, sends them to Gemini for summar
 ### Commands
 
 - `/start` or `/help` — show usage info
-- `/summarize @channel` — summarize a channel
+- `/summarize @channel` or `/summarise @channel` — summarize a channel (both spellings work)
+- Also accepts `https://t.me/channel` links
 
 ## Project structure
 
