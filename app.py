@@ -41,7 +41,7 @@ async def summarize_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         logger.error(f"Error summarizing {channel}: {e}", exc_info=True)
         await update.message.reply_text(
-            f"Error: {e}\n\n"
+            "Failed to summarize the channel.\n\n"
             "Make sure you:\n"
             "- Are a member of the channel\n"
             "- Used the correct channel name (e.g., @channelname)"

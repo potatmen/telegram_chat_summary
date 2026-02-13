@@ -5,7 +5,7 @@ from datetime import datetime, timezone, timedelta
 
 import requests
 from telethon import TelegramClient
-from telethon.errors import SessionPasswordNeededError
+from telethon.errors import SessionPasswordNeededError  # kept for 2FA fallback
 
 logger = logging.getLogger(__name__)
 
@@ -122,6 +122,9 @@ class TelegramSummarizer:
         if not candidates:
             return "No summary generated."
 
-        summary = candidates[0]['content']['parts'][0]['text']
+        try:
+            summary = candidates[0]['content']['parts'][0]['text']
+        except (KeyError, IndexError):
+            return "No summary generated."
         summary = re.sub(r'<[^>]+>', '', summary)
         return summary
